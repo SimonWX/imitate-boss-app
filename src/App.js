@@ -14,9 +14,9 @@ class App extends React.Component{
     return (
       <div>
         <h1>现在有{num}把哒哒哒哒冒蓝火的加特林</h1>
-        <button onClick={addGun()}>申请武器</button>
-        <button onClick={removeGun()}>上交武器</button>
-        <button onClick={addGunAsync()}>拖两天再给</button>
+        <button onClick={addGun()}>申请英雄武器</button>
+        <button onClick={removeGun()}>上交英雄武器</button>
+        <button onClick={addGunAsync()}>拖两天再上缴武器</button>
       </div>
     )
   }
