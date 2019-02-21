@@ -13,7 +13,7 @@ class App extends React.Component{
     const addGunAsync = this.props.addGunAsync
     return (
       <div>
-        <h1>现在有{num}把哒哒哒哒冒蓝火的加特林</h1>
+        <h1>现在有{num}把哒哒哒哒冒蓝火的加特林哈哈</h1>
         <button onClick={addGun()}>申请英雄武器</button>
         <button onClick={removeGun()}>上交英雄武器</button>
         <button onClick={addGunAsync()}>拖两天再上缴武器</button>
