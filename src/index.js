@@ -1,63 +1,37 @@
-import React from 'react'
-import ReactDom from 'react-dom'
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
-import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Link, Redirect, Switch } from 'react-router-dom'
+import React from "react";
+import ReactDom from "react-dom";
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { Provider } from "react-redux";
+import { BrowserRouter, Route, Redirect, Switch } from "react-router-dom";
+import reducers from "./reducers";
+import Auth from "./Auth.js";
+import Dashboard from "./Dashboard.js";
 
-import App from './App'
-import { counter } from './index.redux'
-
-const store = createStore(counter,
+const store = createStore(
+  reducers,
   compose(
     applyMiddleware(thunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   )
-)
-function Erying() {
-  return <h2>二营</h2>
-}
-function Qibinglian() {
-  return <h2>骑兵连</h2>
-}
+);
 
-class Test extends React.Component{
-  constructor(props){
-    super(props)
-  }
-  render(){
-    console.log(this.props)
-    // this.props.history.push('/')
-    return <h2>测试组件{this.props.match.params.location}</h2>
-  }
-}
-
+// 登录
+//   没有登录信息 统一跳转login
+// 页面 导航+显示+注销
+//   一营
+//   二营
+//   骑兵连
+// router+redux
 ReactDom.render(
-  (<Provider store={store}>
+  <Provider store={store}>
     <BrowserRouter>
-      <div>
-        <ul>
-          <li>
-            <Link to="/">一营</Link>
-          </li>
-          <li>
-            <Link to="/erying">二营</Link>
-          </li>
-          <li>
-            <Link to="/qibinglian">骑兵连</Link>
-          </li>
-        </ul>
-        {/* <Redirect to='/qibinglian'></Redirect> */}
-        <Switch>
-          {/*只渲染命中的第一个Route*/}
-          <Route path='/' exact component={App}></Route>
-          <Route path='/:location'  component={Test}></Route>
-          <Route path='/erying' component={Erying}></Route>
-          <Route path='/qibinglian' component={Qibinglian}></Route>
-        </Switch>
-        
-      </div>
+      <Switch>
+        <Route path="/login" component={Auth} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Redirect to="/dashboard" />
+      </Switch>
     </BrowserRouter>
-  </Provider>),
-  document.getElementById('root')
-)
+  </Provider>,
+  document.getElementById("root")
+);
