@@ -1,5 +1,9 @@
 import React from 'react'
+
 class App extends React.Component{
+  // constructor(props){
+    // super(props)
+  // }
   render(){
     const store = this.props.store
     const num = store.getState()
@@ -11,7 +15,7 @@ class App extends React.Component{
         <h1>现在有机枪{num}把</h1>
         <button onClick={()=>store.dispatch(addGun())}>申请武器</button>
         <button onClick={()=>store.dispatch(removeGun())}>上交武器</button>
-        <button onClick={()=>store.dispatch(addGunAsync())}>拖两天再交</button>
+        <button onClick={()=>store.dispatch(addGunAsync())}>拖两天再上交</button>
       </div>
     )
   }

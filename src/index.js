@@ -5,13 +5,18 @@ import thunk from 'redux-thunk'
 import App from './App'
 import { counter, addGun, removeGun, addGunAsync } from './index.redux'
 
-const store = createStore(counter, compose(
-  applyMiddleware(thunk),
-  window.devToolsExtension ? window.devToolsExtension(): f=>f
-))
+const store = createStore(counter, 
+  compose(
+    applyMiddleware(thunk),
+    window.devToolsExtension?window.devToolsExtension():f=>f
+  )
+)
+  
 
-function render() {
-  ReactDom.render(<App store={store} addGun={addGun} removeGun={removeGun} addGunAsync={addGunAsync} />, document.getElementById('root'))
+function render(){
+  ReactDom.render(<App store={store} addGun={addGun} removeGun={removeGun} addGunAsync={addGunAsync}/>, document.getElementById('root'))
 }
+
 render()
+// 订阅，当状态改变时，自动执行下render()
 store.subscribe(render)
