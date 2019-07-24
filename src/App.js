@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { addGun, removeGun, addGunAsync } from "./index.redux";
 
 @connect(
-  // 你需要state什么属性放在props里
+  // 你需要state什么属性放在props里 test
   state => ({ num: state.counter }),
   // 你要什么方法，放在props里，自动dispatch
   { addGun, removeGun, addGunAsync }
